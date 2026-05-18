@@ -64,7 +64,9 @@ User Query
 ### 1. Uncertainty-Guided Routing
 Estimates epistemic confidence using mean Negative Log-Likelihood (NLL) per token in a single forward pass:
 
-$$u(q) = \text{clip}\left(\frac{-\frac{1}{T} \sum \log P(x_t | x_{<t})}{6.0},\ 0,\ 1\right)$$
+```
+u(q) = clip( (-1/T × Σ log P(xₜ | x₍<ₜ₎)) / 6.0,  0,  1 )
+```
 
 Queries with `u(q) ≥ 0.55` route to adaptive retrieval; otherwise direct generation is used.
 
@@ -143,6 +145,7 @@ Evidence receives the highest weight (0.30) as NLI entailment from curated medic
 | Benchmark | MedQA-USMLE |
 | Evaluation | ROUGE (1/2/L), BERTScore-F1 (DeBERTa-XL-MNLI) |
 | Hardware | Google Colab, NVIDIA T4 GPU (16 GB VRAM) |
+
 
 ---
 
